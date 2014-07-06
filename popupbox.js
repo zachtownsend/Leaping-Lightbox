@@ -1,15 +1,16 @@
 $(document).ready(function(){
     var $box = $("ul.gridList li"),
-		$overlay = $(".popupOverlay"),
-		$window = $(window);
+	$overlay = $(".popupOverlay"),
+	$window = $(window);
 	
 	
     $box.click(function() {
+    		var $this = $(this);
 		$(".popupOverlay").remove();
 		
-		var pos = $(this).position(),
-            width = $(this).width(),
-            imgSrc = $(this).find("img").attr("src"),
+		var pos = $this.position(),
+            width = $this.width(),
+            imgSrc = $this.find("img").attr("src"),
 			margin = 10,
 			leftPos = Number(pos.left) + Number(margin),
 			topPos = Number(pos.top) + Number(margin),
@@ -17,7 +18,7 @@ $(document).ready(function(){
 			centre = ($window.width() - (width * 2)) / 2,
 			$scrollTop = $(document).scrollTop(),
 			$scrollLeft = $(document).scrollLeft(),
-			$listIndex = $(this).index() + 1,
+			$listIndex = $this.index() + 1,
 			countElements = $box.length;
        
 	    $("#pageWrapper").append(popupImg);
@@ -35,7 +36,7 @@ $(document).ready(function(){
 			{
 				$listIndex = 0;
 			}
-			$(this).find("img").attr("src", nextImg);
+			$this.find("img").attr("src", nextImg);
 			topPos = nextElm.top + Number(margin),
 			leftPos = nextElm.left + Number(margin);
 			
